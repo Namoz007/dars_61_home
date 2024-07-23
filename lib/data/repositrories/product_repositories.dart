@@ -12,7 +12,11 @@ class ProductRepositories{
     await _productDioNetwork.delete(url);
   }
 
-  Future<void> updateProduct(String url,String title,int price) async{
-    await _productDioNetwork.update(url, title, price);
+  Future<void> updateProduct(String url,Map<String,dynamic> mp) async{
+    await _productDioNetwork.update(url,mp);
+  }
+
+  Future<void> addProduct(Map<String,dynamic> mp) async{
+    await _productDioNetwork.post(mp);
   }
 }

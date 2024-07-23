@@ -13,17 +13,19 @@ class ProductDioNetwork{
     // ..baseUrl = "http://213.230.108.186:5555/api/v1";
   }
 
-  Future<void> post(Product product,String url,)
+  Future<void> post(Map<String,dynamic> mp) async{
+    print('kjhjkhlkhlkkhjk');
+    try{
+      await _dio.post('',data: mp);
+    }catch(e){
+      print("xatolik: ${e}");
+    }
+  }
 
-  Future<void> update(String url,String title,int price) async{
-    print("bu url $url");
+
+  Future<void> update(String url,Map<String,dynamic> mp) async{
     try {
-      final response = await _dio.patch(url, data: {
-        "title": title,
-        "price": price,
-      });
-
-
+      final response = await _dio.put(url, data: mp);
       print("Bu natija: ${response.data}");
     } catch (e) {
       if (e is DioError) {

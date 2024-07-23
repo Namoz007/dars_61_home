@@ -17,11 +17,16 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetAllProductProductEvent>(_getAllProducts);
     on<DeleteProductProductEvent>(_deleteProduct);
     on<EditProductProductEvent>(_editProduct);
+    on<AddProductProductEvent>(_addNewProduct);
+  }
+  
+  Future<void> _addNewProduct(AddProductProductEvent event,emit) async{
+    await _productRepositories.addProduct(event.mp);
   }
 
   Future<void> _editProduct(EditProductProductEvent event,emit) async{
     emit(LoadingProductState());
-    await _productRepositories.updateProduct("/${event.id}", event.title, event.price);
+    await _productRepositories.updateProduct("/${event.id}", event.mp);
     _products = await _productRepositories.getAllProducts();
     emit(LoadedProductState(_products));
   }

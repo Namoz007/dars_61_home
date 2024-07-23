@@ -10,13 +10,15 @@ final class DeleteProductProductEvent extends ProductEvent{
 }
 
 final class AddProductProductEvent extends ProductEvent{
+  int id;
+  Map<String,dynamic> mp;
 
+  AddProductProductEvent(this.id,this.mp);
 }
 
 final class EditProductProductEvent extends ProductEvent{
   int id;
-  String title;
-  int price;
+  Map<String,dynamic> mp;
 
-  EditProductProductEvent(this.id,this.title,this.price);
+  EditProductProductEvent(this.id,this.mp);
 }
